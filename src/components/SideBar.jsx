@@ -10,17 +10,6 @@ import {
   LogOut,
 } from "lucide-react"
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
-
 // Menu items.
 const items = [
   { title: "Dashboard", url: "#", icon: LayoutDashboard },
@@ -33,48 +22,49 @@ const items = [
 
 const SideBar = () => {
   return (
-    <Sidebar className="bg-[#ff6969] text-white mt-24 h-[90vh]  rounded-bl-full">
+    <div className="fixed left-0 top-0 h-[90vh] mt-15 w-64 bg-[#ff6969] flex flex-col overflow-hidden z-50">
       {/* Logo area (overlapping like in Figma) */}
-      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center">
+      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center z-10">
         <span className="text-[#ff6969] font-bold text-lg">SU</span>
       </div>
 
       {/* Content */}
-      <SidebarContent className="bg-[#ff6969] pt-16 flex flex-col rounded-sm">
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu className="space-y-2">
-              {items.map((item, idx) => (
-                <SidebarMenuItem key={item.title}   className="   hover:text-[#ff6969]">
-                  <SidebarMenuButton
-                    asChild
-                    className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-colors   
-                      ${
-                        idx === 0
-                          ? "bg-[white] font-semibold text-[#ff6969]" // active item
-                          : "hover:bg-[white] text-[#ff6969]"
-                      }`}
-                  >
-                    <a href={item.url}>
-                      <item.icon className="w-5 h-5 text-white" />
-                      <span className="text-white ">{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
+      <div className="pt-24 flex flex-col flex-1 px-4">
+        <nav className="space-y-2">
+          {items.map((item, idx) => (
+            <a
+              key={item.title}
+              href={item.url}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors group
+                ${
+                  idx === 0
+                    ? "bg-white text-[#ff6969] font-semibold" // active item
+                    : "text-white hover:bg-white hover:text-[#ff6969]"
+                }`}
+            >
+              <item.icon className={`w-5 h-5 ${
+                idx === 0 
+                  ? "text-[#ff6969]" 
+                  : "text-white group-hover:text-[#ff6969]"
+              }`} />
+              <span className={`${
+                idx === 0 
+                  ? "text-[#ff6969]" 
+                  : "text-white group-hover:text-[#ff6969]"
+              }`}>{item.title}</span>
+            </a>
+          ))}
+        </nav>
+      </div>
 
       {/* Footer */}
-      <SidebarFooter className="mt-auto border-t border-white/30">
-        <button className="flex items-center gap-2 px-4 py-3 w-full text-left text-white hover:bg-[#e85c5c] rounded-lg transition-colors">
-          <LogOut className="w-5 h-5" />
-          Log Out
+      <div className="mt-auto border-t border-white/30 p-4">
+        <button className="flex items-center gap-3 px-4 py-3 w-full text-left text-white hover:bg-[#e85c5c] rounded-lg transition-colors group">
+          <LogOut className="w-5 h-5 text-white group-hover:text-white" />
+          <span className="text-white group-hover:text-white">Log Out</span>
         </button>
-      </SidebarFooter>
-    </Sidebar>
+      </div>
+    </div>
   )
 }
 
