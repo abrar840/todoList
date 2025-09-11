@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button"
 import "@/App.css"
 import { Users, ClipboardClockIcon, ClipboardCheck, MoreVertical, Ellipsis, MoreHorizontal, ClipboardCheckIcon, UserRound, KeyRound } from "lucide-react";
@@ -13,6 +13,11 @@ import {
 } from "@/components/ui/card";
 import TaskStatus from '@/components/TaskStatus';
 import DashCard from "@/components/DashCard.jsx"
+import AddTask from '@/components/models/AddTask';
+import { Label } from '@/components/ui/label';
+
+
+
 const Dashboard = () => {
     const images = [
         "/images/download.jpeg",
@@ -22,7 +27,10 @@ const Dashboard = () => {
         "/images/download (4).jpeg",
     ];
     const now = new Date();
+    const [addTaskModel, setAddTaskModel] = useState(false);
 
+    const toggleAddModel = () => (setAddTaskModel(!addTaskModel));
+    const closeAddModel = () => { setAddTaskModel(false) };
     const dummyData = {
         title: "Attend Niscal's Birthday Party",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic et, commodi voluptate minus sit nihil.",
@@ -31,7 +39,10 @@ const Dashboard = () => {
 
 
     return (
+
+
         <div className="w-full h-full">
+            {addTaskModel && <AddTask onClose={closeAddModel} />}
             <section className="ml-0 p-4 md:p-10 w-full">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <p className="text-xl md:text-2xl lg:text-5xl font-semibold">Welcome back, Sundar</p>
@@ -64,7 +75,16 @@ const Dashboard = () => {
                             <div className='col1 shadow-lg w-full h-full rounded-lg'>
                                 <div className="heading justify-between  p-3 md:p-5 flex flex-col md:flex-row gap-2 md:gap-0">
                                     <div className='flex flex-row gap-2 text-gray-400'> <ClipboardClockIcon />  <p className='text-red-500 text-xl'>To-do</p></div>
-                                    <p className="text-gray-400 text-sm md:text-base"><span className="text-red-500 font-bold p-1 md:p-2 text-lg md:text-xl">+</span>Add task</p>
+                                    <button
+                                        onClick={() => setAddTaskModel(true)}
+                                        className="text-gray-400 text-sm md:text-base flex items-center gap-1 focus:outline-none cursor-pointer bg-transparent   hover:text-gray-700 transition-colors duration-200"
+                                        aria-label="Add task"
+                                    >
+                                        <span className="text-red-500 font-bold p-1 md:p-2 text-lg md:text-xl">+</span>
+                                        Add task
+                                    </button>
+
+
                                 </div>
                                 <div className='px-3 md:px-5 flex flex-row items-center gap-2 -mt-2'>
                                     <p className="text-sm">
