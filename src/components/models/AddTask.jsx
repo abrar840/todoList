@@ -21,11 +21,11 @@ const AddTask = ({ onClose }) => {
         const file = e.target.file[0];
     }
     return (
-        <div
-            className='w-full h-full border-gray-400 fixed top-0 left-0 z-1000'>
+        <div className="form fixed inset-0 flex items-center justify-center z-50">
 
             <div className="overlay absolute top-0 left-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.5)]"></div>
-            <div className="form absolute top-[9%] left-[20%] h-[80%] lg:w-[50%] w-[70%] rounded bg-white">
+            <div className="relative bg-white rounded w-[90%] md:w-[70%] lg:w-[50%] 
+                  max-h-[90vh] overflow-y-auto shadow-lg">
                 <div className="card  rounded bg-white">
                     <Card className="border-none shadow-none h-100%  ">
                         <CardHeader>
@@ -75,9 +75,9 @@ const AddTask = ({ onClose }) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="last flex flex-row gap-8">
-                                            <div className="description border border-gray-400 h-100% w-[60%] rounded"><Textarea className="border-none shadow-none md:h-[150px]" /> </div>
-                                            <div className="img border border-gray-400 h-100% w-[30%] rounded">
+                                        <div className="last flex flex-col md:flex-row gap-8">
+                                            <div className="description border border-gray-400 h-100% md:w-[60%] rounded"><Textarea className="border-none shadow-none md:h-[150px]" /> </div>
+                                            <div className="img border border-gray-400 h-100% md:w-[30%] rounded">
                                                 <label
                                                     htmlFor="file-upload"
                                                     className="flex flex-col items-center justify-center p-4     rounded-lg cursor-pointer hover:border-gray-500 transition-all duration-200 text-center">
@@ -98,15 +98,15 @@ const AddTask = ({ onClose }) => {
                                         </div>
                                     </div>
                                 </CardContent>
-                                
+
                             </Card>
-                             <div className="btn mt-5 ml-5 "> 
+                            <div className="btn mt-5 ml-5 ">
                                 <Button className="bg-orange-600">
                                     Done
                                 </Button>
                             </div>
-                            </div>
-                            </Card>
+                        </div>
+                    </Card>
                 </div>
             </div>
         </div>
