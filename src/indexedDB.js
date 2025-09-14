@@ -12,7 +12,7 @@ export function openDB() {
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
             if (!db.objectStoreNames.contains(STORE_NAME)) {
-                db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: false })
+                db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true })
             }
         };
 
