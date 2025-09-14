@@ -61,6 +61,7 @@ const Dashboard = () => {
             navigate(`/viewmytask/${content.id}`);
     }
  
+   
     return (
 
 
@@ -137,8 +138,8 @@ const Dashboard = () => {
                                 <div className='row1 shadow-lg flex flex-col  h-full w-full rounded-lg md:p-10'>
                                     <div className='flex flex-row gap-2 text-gray-400 py-5'> <ClipboardCheckIcon />  <p className='text-red-500 text-xl'>Completed Task</p></div>
                                     <div className="cards  h-full w-full p-{5 flex flex-col gap-5">
-                                        <DashCard content={dummyData} type={"2"} />
-                                        <DashCard content={dummyData} type={"2"} />
+                                        {/* <DashCard content={dummyData} type={"2"} />
+                                        <DashCard content={dummyData} type={"2"} /> */}
 
                                     </div>
                                 </div>
