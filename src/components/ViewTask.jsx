@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Trash2, Edit } from 'lucide-react';
 import { deleteItem } from '@/indexedDB';
+import EditTask from './models/EditTask';
 
+const ViewTask = ({ content,onDelete}) => {
 
-const ViewTask = ({ content,onDelete }) => {
+ const [editModel, setEditModel] = useState(false);
+    const toggleEditModel = () => (setEditModel(!editModel));
+    const closeEditModel = () => { setEditModel(false) };
 
-
-    const dummyData = {
-        title: "Attend Niscal's Birthday Party",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic et, commodi volup",
-        path: "/images/download (2).jpeg"
-    };
+   
 
 
     return (
         <div className='w-full h-full flex flex-col'>
+             {editModel && <EditTask onClose={closeEditModel}  task={content}/>}
             <div className="col">
                 <div className="row1 flex flex-row">
                     <div className="img h-[130px] w-[130px]"><img src={content.image} alt="" className='w-full h-full object-cover rounded-lg' /></div>
@@ -51,7 +51,7 @@ const ViewTask = ({ content,onDelete }) => {
                 >
                     <Trash2 className="w-5 h-5 text-white" />
                 </button>
-                <button className="bg-red-500 hover:bg-red-600 p-2 rounded-lg">
+                <button className="bg-red-500 hover:bg-red-600 p-2 rounded-lg"  onClick={() => setEditModel(true)}>
                     <Edit className="w-5 h-5 text-white" />
                 </button>
 
