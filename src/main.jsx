@@ -5,7 +5,9 @@ import "./index.css";
 import App from "./App.jsx";
 import SideBar from "./components/SideBar.jsx";
 import TopBar from "./components/TopBar.jsx";
-import Dashboard from "./pages/Dashboard.jsx"; // your dashboard page
+import ViewMyTask from "./pages/ViewMyTask";
+import Dashboard from "./pages/Dashboard.jsx";
+import MyTask from "./pages/MyTask.jsx";// your dashboard page
 function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -31,6 +33,9 @@ function AppLayout() {
           <Routes>
             <Route path="/app" element={<App />} />
             <Route path="/" element={<Dashboard />} />
+            <Route path="/mytask" element={<MyTask />} />
+             <Route path="/viewmytask/:id" element={<ViewMyTask />} />
+
           </Routes>
         </main>
       </div>
