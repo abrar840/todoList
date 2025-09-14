@@ -40,7 +40,7 @@ const DashCard = ({ content, type }) => {
                         </div>
                     </CardFooter>
                 </Card>) : (
-                <Card className="px-1 bg-transparent border-gray-400 ">
+                <Card className=" flex px-1 bg-transparent border-gray-400 max-w-sm">
                     <CardHeader>
                         <CardTitle className="flex flex-row items-baseline"><Circle className=' h-4 w-4 mr-1 -ml-4 text-green-500' />{content.title}</CardTitle>
                         <CardDescription></CardDescription>
@@ -49,7 +49,7 @@ const DashCard = ({ content, type }) => {
                         </CardAction>
                     </CardHeader>
                     <CardContent className="md:-mt-4 text-gray-500">
-                        <div className='flex flex-col lg:flex-row'>
+                        <div className='flex flex-col lg:flex-row '>
                             <p className="md:pr-7">{content.description}</p>
                             <div className='h-25 lg:w-60 w-30 rounded-lg overflow-hidden mr-5'><img src={content.path} className="w-full h-full object-cover" alt="" /></div>
                         </div>

@@ -9,18 +9,20 @@ import {
   HelpCircle,
   LogOut,
 } from "lucide-react";
-
+import { useLocation } from "react-router-dom";
 // Menu items.
 const items = [
-  { title: "Dashboard", url: "#", icon: LayoutDashboard },
+  { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Vital Task", url: "#", icon: AlertTriangle },
-  { title: "My Task", url: "#", icon: Calendar },
+  { title: "My Task", url: "/mytask", icon: Calendar },
   { title: "Task Categories", url: "#", icon: Search },
   { title: "Settings", url: "#", icon: Settings },
   { title: "Help", url: "#", icon: HelpCircle },
 ];
 
 const SideBar = ({ isOpen, onClose }) => {
+const location = useLocation();
+
   return (
     <>
       {isOpen && (
@@ -44,32 +46,34 @@ const SideBar = ({ isOpen, onClose }) => {
 
         <div className="pt-24 flex flex-col flex-1 px-4">
           <nav className="space-y-2">
-            {items.map((item, idx) => (
+            {items.map((item, idx) => {
+                   const isactive=location.pathname === item.url;
+            return(
               <a
                 key={item.title}
                 href={item.url}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors group
-                ${idx === 0
+                ${ isactive
                     ? "bg-white text-[#ff6969] font-semibold"
                     : "text-white hover:bg-white hover:text-[#ff6969]"
                   }`}
               >
                 <item.icon
-                  className={`w-5 h-5 ${idx === 0
+                  className={`w-5 h-5 ${ isactive
                       ? "text-[#ff6969]"
                       : "text-white group-hover:text-[#ff6969]"
                     }`}
                 />
                 <span
-                  className={`${idx === 0
+                  className={`${ isactive
                       ? "text-[#ff6969]"
                       : "text-white group-hover:text-[#ff6969]"
                     }`}
                 >
-                  {item.title}
+                  {item.title}  
                 </span>
               </a>
-            ))}
+            )})}
           </nav>
         </div>
 
