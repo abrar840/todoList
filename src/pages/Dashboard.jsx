@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom";
 import "@/App.css"
 import { Users, ClipboardClockIcon, ClipboardCheck, MoreVertical, Ellipsis, MoreHorizontal, ClipboardCheckIcon, UserRound, KeyRound } from "lucide-react";
 import {
@@ -15,7 +16,7 @@ import TaskStatus from '@/components/TaskStatus';
 import DashCard from "@/components/DashCard.jsx"
 import AddTask from '@/components/models/AddTask';
 import { Label } from '@/components/ui/label';
-
+import { getAllItem } from '@/indexedDB';
 
 
 const Dashboard = () => {
@@ -28,7 +29,9 @@ const Dashboard = () => {
     ];
     const now = new Date();
     const [addTaskModel, setAddTaskModel] = useState(false);
-
+    const [tasks, SetTasks] = useState([]);
+    const [selectedTaskId, SetSelectedTaskId] = useState("");
+    const [isdetail, SetIsdetail] = useState(false);
     const toggleAddModel = () => (setAddTaskModel(!addTaskModel));
     const closeAddModel = () => { setAddTaskModel(false) };
     const dummyData = {
@@ -36,8 +39,28 @@ const Dashboard = () => {
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic et, commodi voluptate minus sit nihil.",
         path: "/images/download (2).jpeg"
     };
+ const navigate = useNavigate();
 
 
+    useEffect(() => {
+
+        fetchall();
+
+    }, [addTaskModel]);
+
+    const fetchall = async () => {
+        const data = await getAllItem();
+        SetTasks(data);
+        console.log(data);
+        SetIsdetail(false);
+    }
+
+   const showDetails = (content) => {
+        SetSelectedTaskId(content.id);
+        
+            navigate(`/viewmytask/${content.id}`);
+    }
+ 
     return (
 
 
@@ -72,7 +95,7 @@ const Dashboard = () => {
                 <div className="px-4 md:px-10">
                     <div className="content w-full  border-2 border-gray-300 p-4 md:p-10">
                         <div className="row flex flex-col md:flex-row   gap-4">
-                            <div className='col1 shadow-lg w-full h-full rounded-lg'>
+                            <div className=' col1 shadow-lg w-full md:min-w-[500px] h-full rounded-lg'>
                                 <div className="heading justify-between  p-3 md:p-5 flex flex-col md:flex-row gap-2 md:gap-0">
                                     <div className='flex flex-row gap-2 text-gray-400'> <ClipboardClockIcon />  <p className='text-red-500 text-xl'>To-do</p></div>
                                     <button
@@ -93,14 +116,14 @@ const Dashboard = () => {
                                     <p className='text-gray-400'> Today</p>
                                 </div>
                                 <div className="cards flex flex-col px-4 mt-3 w-full gap-4">
-                                    <DashCard content={dummyData} type={"1"} />
-                                    <DashCard content={dummyData} type={"1"} />
+                                               { tasks.length===0 && <h2>no task found to show </h2>}
+                                    {tasks.map((task) => (
+                                        <DashCard content={task} type={"1"} key={task.id} handleclick={showDetails} />))
+                                    }
                                     <br />
-                                    <hr />
+                                    
                                     <br />
-                                    <div className='pb-10'>
-                                        <DashCard content={dummyData} type={"1"} />
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div className="col2 flex  flex-col w-full gap-5">
