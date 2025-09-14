@@ -1,7 +1,7 @@
 
 
 export const DB_NAME = "MyAppDB";
-export const DB_VERSION = 5; // Increment if schema changes
+export const DB_VERSION = 6; // Increment if schema changes
 export const STORE_NAME = "items";
 
 
