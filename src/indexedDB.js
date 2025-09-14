@@ -1,7 +1,7 @@
 
 
 export const DB_NAME = "MyAppDB";
-export const DB_VERSION = 5; // Increment if schema changes
+export const DB_VERSION = 6; // Increment if schema changes
 export const STORE_NAME = "items";
 
 
@@ -12,7 +12,7 @@ export function openDB() {
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
             if (!db.objectStoreNames.contains(STORE_NAME)) {
-                db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: false })
+                db.createObjectStore(STORE_NAME, { keyPath: "id", autoIncrement: true })
             }
         };
 
