@@ -25,15 +25,24 @@ const DashCard = ({ content, type, handleclick }) => {
                         </CardAction>
                     </CardHeader>
                     <CardContent className="md:-mt-4 text-gray-500 w-full">
-                        <div className='flex flex-col lg:flex-row justify-between'>
-                            <div className="w-60">{content.description
-                                .split(" ")
-                                .slice(0, 30)
-                                .join(" ") +
-                                (content.description.split(" ").length > 30 ? "..." : "")}</div>
-                            <div className='h-25 lg:min-w-[100px] w-[100px] rounded-lg overflow-hidden '><img src={content.image} className="w-full h-full object-cover" alt="" /></div>
+                        <div className="flex flex-col lg:flex-row justify-between gap-3">
+                            <div className="flex-1 min-w-0 break-words">
+                                {content.description
+                                    .split(" ")
+                                    .slice(0, 30)
+                                    .join(" ") +
+                                    (content.description.split(" ").length > 30 ? "..." : "")}
+                            </div>
+                            <div className="h-24 lg:h-25 w-[100px] flex-shrink-0 rounded-lg overflow-hidden">
+                                <img
+                                    src={content.image}
+                                    className="w-full h-full object-cover"
+                                    alt=""
+                                />
+                            </div>
                         </div>
                     </CardContent>
+
                     <CardFooter>
                         <div className="flex flex-col md:flex-row md:gap-4 lg:gap-6 gap-2">
                             {/* Priority */}
@@ -65,15 +74,24 @@ const DashCard = ({ content, type, handleclick }) => {
                         </CardAction>
                     </CardHeader>
                     <CardContent className="md:-mt-4 text-gray-500 w-full">
-                        <div className='flex flex-col lg:flex-row '>
-                            <div className="w-60">{content.description
-                                .split(" ")
-                                .slice(0, 30)
-                                .join(" ") +
-                                (content.description.split(" ").length > 30 ? "..." : "")}</div>
-                            <div className='h-25 lg:min-w-[100px] w-[100px] rounded-lg overflow-hidden mr-5'><img src={content.image} className="w-full h-full object-cover" alt="" /></div>
+                        <div className="flex flex-col lg:flex-row justify-between gap-3">
+                            <div className="flex-1 min-w-0 break-words">
+                                {content.description
+                                    .split(" ")
+                                    .slice(0, 30)
+                                    .join(" ") +
+                                    (content.description.split(" ").length > 30 ? "..." : "")}
+                            </div>
+                            <div className="h-24 lg:h-25 w-[100px] flex-shrink-0 rounded-lg overflow-hidden">
+                                <img
+                                    src={content.image}
+                                    className="w-full h-full object-cover"
+                                    alt=""
+                                />
+                            </div>
                         </div>
                     </CardContent>
+
                     <CardFooter className="-mt-8">
                         <div className='flex flex-col lg:flex-row lg:gap-8  gap-1'>
 
