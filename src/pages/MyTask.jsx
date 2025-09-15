@@ -28,11 +28,11 @@ const MyTask = () => {
       <div className="section1 p-4 md:p-10">
         <div className="row flex flex-col md:flex-row gap-5">
 
-          <div className="col1 flex flex-col flex-1 border border-gray-400 rounded-xl p-5 px-7">
+         <div className="col1 flex flex-col flex-1 border border-gray-400 rounded-xl p-5 px-7 w-auto lg:max-w-[50%]">
             <div className="title font-semibold mb-2">
               <p>MyTasks</p>
             </div>
-            <div className="flex flex-col gap-5 cards pt-2">
+            <div className="flex flex-col gap-5 cards pt-2 w-full">
               {tasks.length === 0 && (
                 <h2 className="text-gray-500 text-center">
                   No task found — go to dashboard and add a task
