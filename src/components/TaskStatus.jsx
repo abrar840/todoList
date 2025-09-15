@@ -42,10 +42,10 @@ const TaskStatus = () => {
 
 
     return (
-        <div>
+       <div >
             <Card className="px-1 bg-transparent border-none shadow-none h-[34%]">
-                <CardContent>
-                    <div className="flex flex-col lg:flex-row justify-around items-center">
+             
+                    <div className="flex  flex-col xl:flex-row justify-around items-center w-auto">
                         <div className="relative flex flex-col items-center">
                             {renderChart(84, "green")}
                             <p className="mt-2 text-sm text-green-600">● Completed</p>
@@ -61,7 +61,7 @@ const TaskStatus = () => {
                             <p className="mt-2 text-sm text-red-600">● Not Started</p>
                         </div>
                     </div>
-                </CardContent>
+               
 
             </Card></div>
     )
