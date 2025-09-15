@@ -36,7 +36,7 @@ export async function addItem(item) {
         const store = tx.objectStore(STORE_NAME);
         const request = store.add(item);
         request.onsuccess = () => resolve(true);
-        request.onerror = (e) => reject(e.taret.error);
+        request.onerror = (e) => reject(e.target.error);
     });
 }
 
