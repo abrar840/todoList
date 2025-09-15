@@ -15,7 +15,7 @@ function AppLayout() {
   const closeSidebar = () => setSidebarOpen(false);
 
   return (
-    <div className="min-h-screen relative bg-gray-50">
+    <div className="min-h-screen relative bg-gray-50 w-[99vw]">
       <TopBar onMenuClick={toggleSidebar} />
 
       <div className="flex pt-16 md:pt-20">
@@ -24,11 +24,7 @@ function AppLayout() {
 
         {/* Main content */}
         <main
-          className={`
-             p-2 md:p-4
-            
-            lg:ml-64   /* only push content on large screens */
-          `}
+          className="flex-1 w-[100%] min-w-0 p-2 md:p-4 lg:p-6 xl:p-8 lg:ml-65"
         >
           <Routes>
             <Route path="/app" element={<App />} />

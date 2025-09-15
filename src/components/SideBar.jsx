@@ -33,8 +33,8 @@ const location = useLocation();
       )}
 
       <div
-        className={`fixed left-0 h-[90vh] mt-14 w-64 bg-[#ff6969] flex flex-col z-50 transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
-          } md:flex`}
+        className={`   fixed left-0 h-[90vh] mt-20 w-64 bg-[#ff6969] flex flex-col z-50 transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:translate-x-0 md:flex`}
       >
         <div className="absolute -top-9 left-1/2 -translate-x-1/2 w-18 h-18 rounded-full border border-amber-200 bg-black shadow-lg flex items-center justify-center z-10 overflow-hidden">
           <img
