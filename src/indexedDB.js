@@ -123,7 +123,7 @@ export async function updateItem(item, key) {
         const store = tx.objectStore(STORE_NAME);
         const deleteReq = store.delete(key);
         deleteReq.onsuccess = () => {
-            const addReq = store.add(item, key);
+            const addReq = store.add(item);
             addReq.onsuccess = () => {
                 resolve(true);
             };
