@@ -82,7 +82,10 @@ const AddTask = ({ onClose }) => {
             className='w-full h-full border-gray-400 fixed top-0 left-0 z-1000 '>
 
             <div className="overlay absolute top-0 left-0 w-[100%] h-[100%] bg-[rgba(0,0,0,0.5)] "></div>
-            <div className="form absolute top-[2%] md:top-[9%] md:left-[20%] h-[100vh] w-[100%]  lg:h-[90%] lg:w-[50%] md:w-[70%] rounded bg-white overflow-auto">
+          <div className="form absolute top-[2%] md:top-[9%] md:left-[20%] 
+     h-[100vh] w-[100%] lg:h-[90%] lg:w-[50%] md:w-[70%] 
+     rounded bg-white overflow-y-auto">
+
                 <div className="card  rounded bg-white ">
                     <Card className="border-none shadow-none   ">
                         <CardHeader>
@@ -157,7 +160,7 @@ const AddTask = ({ onClose }) => {
 
                                                     <label
                                                         htmlFor="file-upload"
-                                                        className="flex flex-col items-center justify-center p-4 rounded-lg cursor-pointer hover:border-gray-500 transition-all duration-200 text-center"
+                                                        className="  md:w-full  w-[100%] flex flex-col items-center justify-center p-4 rounded-lg cursor-pointer hover:border-gray-500 transition-all duration-200 text-center"
                                                     >
                                                       {!image && (<><UploadCloud className="w-10 h-10 text-gray-400 mb-2" />
                                                         <p className="text-sm text-gray-500">Drag & Drop files here</p>
@@ -173,12 +176,12 @@ const AddTask = ({ onClose }) => {
                                                         />
 
                                                          {image && (
-                                                        <img src={image} alt="Preview" className="mt-2 w-full max-w-xs rounded" />
+                                                        <img src={image} alt="Preview" className="mt-2 w-full max-w-xs rounded " />
                                                     )}
                                                     </label>
                                                    
                                                 </div>
-                                                {errors.description && <p className="text-red-500 text-sm">{errors.image}</p>}
+                                                {errors.description && <p className="text-red-500 text-sm ">{errors.image}</p>}
                                             </div>
                                         </div>
 
